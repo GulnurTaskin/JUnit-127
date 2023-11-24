@@ -28,23 +28,29 @@ public class C02_AramaTesti {
         WebElement aramaKutusu = driver.findElement(By.xpath("//input[@id='global-search']"));
 
         // 3- “phone” ile arama yapalim
-        aramaKutusu.sendKeys("phone"+ Keys.ENTER)
-;
+        aramaKutusu.sendKeys("phone"+ Keys.ENTER);
+
         // 4- Bulunan sonuc sayisini yazdiralim
 
+        WebElement sonucYaziElementi = driver.findElement(By.className("product-count-text"));
+        System.out.println(sonucYaziElementi.getText());
 
         // 5- Ilk urunu tiklayalim
 
-
+        driver.findElement(By.xpath("(//div[@class='product-box my-2  py-1'])[1]")).click();
 
         // 6- Urunun stokta var oldugunu test edin
 
-        WebElement urunStokElementi = driver.findElement(By.xpath("driver.findElement(By.xpath(\"//*[@* ='info  greenclr'\"));"));
+        WebElement urunStokElementi = driver.findElement(By.xpath("(//span[@class='heading-xs '])[1] "));
 
         String expectedStokDurumu = "Avaibility: In Stock" ;
         String actualStokDurumu = urunStokElementi.getText();
 
-        if (expectedStokDurumu.equals(actualStokDurumu))
+        if (expectedStokDurumu.equals(actualStokDurumu)){
+            System.out.println("Urun stok testi PASSED");
+        }else{
+            System.out.println("Urun stok testi FAILED");
+        }
 
 
 

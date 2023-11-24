@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import tests.utilities.ReusableMethods;
 
 import java.time.Duration;
 
@@ -26,25 +27,23 @@ public class C03_WebappTesti {
         driver.findElement(By.id("signin_button")).click();
 
 
-        // 3. Login alanine  “username” yazdirin
+        // 3. Login alanina  “username” yazdirin
 
         WebElement loginKutusu = driver.findElement(By.id("user_login"));
         loginKutusu.sendKeys("username");
 
         // 4. Password alanina “password” yazdirin
 
-
-        WebElement passwordKutusu = driver.findElement(By.id(""));
-
+        WebElement passwordKutusu = driver.findElement(By.id("user_password"));
+        passwordKutusu.sendKeys("password");
 
         // 5. Sign in buttonuna tiklayin
 
+        driver.findElement(By.xpath("//*[@*='Sign in'")).click();
 
         // 6. Back tusu ile sayfaya donun
 
-
         driver.navigate().back();
-
 
         // 7. Online Banking menusunden Pay Bills sayfasina gidin
 
@@ -62,7 +61,7 @@ public class C03_WebappTesti {
 
         // 10. Pay buttonuna tiklayin
 
-        driver.findElement(By.id("pay_saved_payees"));
+        driver.findElement(By.id("pay_saved_payees")).click();
 
         // 11. “The payment was successfully submitted.” mesajinin ciktigini test edin
 
@@ -72,16 +71,14 @@ public class C03_WebappTesti {
         String actualResultYazisi = mesajElementi.getText();
 
         if (expectedResult.equals(actualResultYazisi)) {
-            System.out.println("");
-        }else {
-            System.out.println("");
+            System.out.println("Payment test PASSED");
+         }else {
+            System.out.println("Payment test FAILED");
 
         }
 
 
-
-
-
+        ReusableMethods.bekle(3);
         driver.quit();
     }
 }
