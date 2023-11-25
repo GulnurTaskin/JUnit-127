@@ -16,8 +16,10 @@ public class C05_TestNotasyonu {
     // BILEMEYIZ ve KONTROL EDEMEYIZ
 
     @Test
-    public void testOtomasyonuTest() { // test methodlari static olmamalidir
+    public void testOtomasyonuTest() {
+        // test methodlari static olmamalidir, her yerden kolayca ulasilabilmesi icin
 
+        // test icin ayarlamalarimizi yapiyoruz..
         WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -34,7 +36,7 @@ public class C05_TestNotasyonu {
         String actualTitle = driver.getTitle();
 
         if (actualTitle.contains(expectedTitleIcerik)) {
-            System.out.println("Test Otomasyon testii PASSED");
+            System.out.println("Test Otomasyon testi PASSED");
         } else {
             System.out.println("Test Otomasyon testi FAILED");
 
@@ -49,6 +51,8 @@ public class C05_TestNotasyonu {
     @Test
     public void wisequarterTest() {
 
+        // test icin gerekli ayarlamalar..
+
         WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -56,8 +60,18 @@ public class C05_TestNotasyonu {
 
         // wisequarter.com adresine gidin
 
+        driver.get("https://www.wisequarter.com");
+
         // title'in "Wise" icerdigini test edin
 
+        String expectedTitleIcerik = "Wise";
+        String actualTitle = driver.getTitle();
+        if (actualTitle.contains(expectedTitleIcerik)){
+            System.out.println("Wisequarter testi PASSED");
+        }else System.out.println("Wisequarter testi FAILED");
+
+        ReusableMethods.bekle(1);
+        driver.quit();
 
     }
 
@@ -66,9 +80,27 @@ public class C05_TestNotasyonu {
     @Test
     public void googlTest () {
 
-            //
+        // test icin gerekli ayarlamalar..
 
-            //
+        WebDriverManager.chromedriver().setup();
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
+        // google.com adresine gidin
+
+        driver.get("https://www.google.com");
+
+        // url'in "google" icerdigini test edin
+
+        String expectedUrlIcerik = "google";
+        String actualUrl = driver.getCurrentUrl();
+        if (actualUrl.contains(expectedUrlIcerik)){
+            System.out.println("Google testi PASSED");
+        }else System.out.println("Google testi FAILED");
+
+        ReusableMethods.bekle(1);
+        driver.quit();
 
 
         }

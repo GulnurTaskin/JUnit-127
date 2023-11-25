@@ -40,6 +40,9 @@ public class C03_Assertions {
         Assert.assertEquals("https://testotomasyonu.com/",actualUrl);
 
 
+        // Assert.assertTrue();  Assert.assertFalse();  Assert.assertEquals();  Assert.assertNotEquals();
+        // olmak uzere 4 assert method'u vardir, en cok kullandigimiz..
+
 
 
     }
