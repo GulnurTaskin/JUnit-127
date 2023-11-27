@@ -1,9 +1,11 @@
 package tests.utilities;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class ReusableMethods {
     public static List<String> stringListeDonustur(List<WebElement> elementlerListesi){
@@ -44,5 +46,41 @@ public class ReusableMethods {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public static WebDriver titleIleSayfaDegistir(WebDriver driver, String hedefSayfaTitle){
+
+
+
+       Set<String> tumWhdSeti = driver.getWindowHandles();
+
+       // burda bir for each loop olusturuyoruz,
+       // each ile tumWhdSetindeki handle degerlerini ele aliyoruz
+       // sonra eger diyoruz, ele aldigimiz her bir eachTitle, hedef sayfa title'a esitse
+       // driver'i bu sayfaya return ile donduruyoruz
+       for (String each: tumWhdSeti
+       ) {
+         String eachTitle = driver.switchTo().window(each).getTitle();
+         if (eachTitle.equals(hedefSayfaTitle)){
+             return driver;
+         }
+
+       }
+        return driver;
+    }
+
+    public static String IlkSayfaWhdIleIkinciSayfaWhdBul(WebDriver driver, String ilkSayfaWhd) {
+
+        Set<String> tumWhdSeti = driver.getWindowHandles();
+        tumWhdSeti.remove(ilkSayfaWhd);
+        for (String each:tumWhdSeti
+        ){
+            return each;
+        }
+
+            return null; // bu satirin hic calismayacagini biliyoruz ama
+                         // bu return'u eklemeyince intellij uyari veriyor
+                         // o yuzden..
+                         // javanin gonlu olsun diye bu return'u ekliyoruz ;)
     }
 }
