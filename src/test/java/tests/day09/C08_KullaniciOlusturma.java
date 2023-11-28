@@ -1,6 +1,12 @@
 package tests.day09;
 
+import org.junit.Assert;
 import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import tests.utilities.ReusableMethods;
 import tests.utilities.TestBase;
 
 public class C08_KullaniciOlusturma extends TestBase {
@@ -13,10 +19,60 @@ public class C08_KullaniciOlusturma extends TestBase {
 
         // 2- Account linkine tiklayin
 
+        driver.findElement(By.xpath("(//span[text()='Account'])[1]")).click();
 
         // 3- Sign Up linkine basalim
+
+        driver.findElement(By.xpath("//*[text()=' Sign Up']")).click();
+
         // 4- Ad, soyad, mail ve sifre kutularina deger yazalim ve Sign Up butonuna basalim
+
+        WebElement fistNameKutusu = driver.findElement(By.xpath("//*[@id='firstName']"));
+
+        Actions actions = new Actions(driver);
+        ReusableMethods.bekle(1);
+        actions.click(fistNameKutusu)
+                .sendKeys("Ahmet")
+                .sendKeys(Keys.TAB)
+                .sendKeys("Bulut")
+                .sendKeys(Keys.TAB)
+                .sendKeys("bulut@gmail.com")
+                .sendKeys(Keys.TAB)
+                .sendKeys("12345")
+                .sendKeys(Keys.TAB)
+                .sendKeys("12345")
+                .sendKeys(Keys.ENTER)
+                .perform();
+
+
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
+        driver.findElement(By.xpath("//*[@id='btn-submit-form']"));
+
         // 5- Kaydin olusturuldugunu test edin
 
+        /*
+             Kayit olusturulunca bizi signIn sayfasina yonlendiriyor
+             Kaydin olusturuldugunu test etmek icin
+             girdigimiz bilgilerle login olabildigimizi test edelim
+
+          */
+
+        WebElement emailKutusu= driver.findElement(By.xpath("(//input[@type='email'])[1]"));
+        WebElement passwordKutusu = driver.findElement(By.xpath("(//input[@type='password'])[1]"));
+        ReusableMethods.bekle(2);
+        WebElement signInButonu = driver.findElement(By.xpath("//button[@id='submitlogin']"));
+
+        emailKutusu.sendKeys("bulut@gmail.com");
+        passwordKutusu.sendKeys("12345");
+        signInButonu.click();
+
+        WebElement logoutLinki = driver.findElement(By.xpath("//span[text()='Logout']"));
+
+        Assert.assertTrue(logoutLinki.isDisplayed());
+
+        ReusableMethods.bekle(2);
+        logoutLinki.click();
+
+        ReusableMethods.bekle(5);
     }
 }
