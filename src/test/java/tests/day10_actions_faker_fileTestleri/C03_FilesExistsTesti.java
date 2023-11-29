@@ -13,21 +13,24 @@ public class C03_FilesExistsTesti extends TestBase {
     @Test
     public void dosyaIndirmeTesti(){
 
-        // 2. https://the-internet.herokuapp.com/download adresine gidelim.
+        // 1. https://the-internet.herokuapp.com/download adresine gidelim.
+
         driver.get("https://the-internet.herokuapp.com/download");
 
-        //3. logo.png dosyasını indirelim
+        // 2. logo.png dosyasını indirelim
 
         driver.findElement(By.xpath("//a[text()='logo.png']")).click();
         ReusableMethods.bekle(5);
 
-        //4. Dosyanın başarıyla indirilip indirilmediğini test edelim
+        // 3. Dosyanın başarıyla indirilip indirilmediğini test edelim
 
         String dosyaYolu ="C:\\Users\\taski\\Downloads\\logo.png";
 
         Assert.assertTrue(Files.exists(Paths.get(dosyaYolu)));
 
 
+        // testi ilk yaptigimizda logo.png objesi vardi, artik yok o yuzden test failed ile sonuclaniyor.
+        // istersek farkli dosyalari indirip bu sekilde bilgisayarimizda olup olmadigini test edebiliriz
 
     }
 }
