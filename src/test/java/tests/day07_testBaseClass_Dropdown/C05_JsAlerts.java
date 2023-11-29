@@ -1,12 +1,11 @@
 package tests.day07_testBaseClass_Dropdown;
 
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import tests.utilities.ReusableMethods;
-import tests.utilities.TestBase;
+import utilities.ReusableMethods;
+import utilities.TestBase;
 
 public class C05_JsAlerts extends TestBase {
     // 3 test method’u olusturup asagidaki gorevi tamamlayin

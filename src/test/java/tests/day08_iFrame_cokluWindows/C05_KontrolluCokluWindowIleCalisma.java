@@ -4,8 +4,8 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WindowType;
-import tests.utilities.ReusableMethods;
-import tests.utilities.TestBase;
+import utilities.ReusableMethods;
+import utilities.TestBase;
 
 public class C05_KontrolluCokluWindowIleCalisma extends TestBase {
 

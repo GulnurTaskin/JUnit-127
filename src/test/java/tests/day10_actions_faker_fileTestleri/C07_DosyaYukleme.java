@@ -1,9 +1,11 @@
 package tests.day10_actions_faker_fileTestleri;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import tests.utilities.TestBase;
+import utilities.ReusableMethods;
+import utilities.TestBase;
 
 public class C07_DosyaYukleme extends TestBase {
 
@@ -23,16 +25,41 @@ public class C07_DosyaYukleme extends TestBase {
      */
 
 // 1.https://the-internet.herokuapp.com/upload adresine gidelim
+
     driver.get("https://the-internet.herokuapp.com/upload");
 
 //2.chooseFile butonuna basalim
 
-    WebElement chooseFileButonu = driver.findElement(By.id("file-submit"));
+    WebElement chooseFileButonu = driver.findElement(By.id("file-upload"));
+
+    // testlerimizin butun takim uyelerinde calisabilmesi icin
+    // dosya yolunu dinamik yapmaliyiz
+    // biz bir onceki test'de downloads'a indirdigimiz
+    // logo.png'yi yukleyelim
+
 
 //3.Yuklemek istediginiz dosyayi secelim.
+
+    String dinamikDosyaYolu = System.getProperty("user.home") +   // herkeste farkli olan kisim
+            "/Downloads/logo.png";  // herkeste ortak olan kisim
+
+    chooseFileButonu.sendKeys(dinamikDosyaYolu);
+
 //4.Upload butonuna basalim.
+
+    driver.findElement(By.id("file-submit")).click();
+
 //5.“File Uploaded!” textinin goruntulendigini test edelim.
 
+
+    WebElement uplodedYaziElementi = driver.findElement(By.tagName("h3"));
+
+    String expectedYazi = "File Uploaded!";
+    String actualYazi = uplodedYaziElementi.getText();
+
+    Assert.assertEquals(expectedYazi,actualYazi);
+
+    ReusableMethods.bekle(1);
 
 }
 

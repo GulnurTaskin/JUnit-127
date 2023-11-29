@@ -3,8 +3,8 @@ package tests.day10_actions_faker_fileTestleri;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import tests.utilities.ReusableMethods;
-import tests.utilities.TestBase;
+import utilities.ReusableMethods;
+import utilities.TestBase;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;

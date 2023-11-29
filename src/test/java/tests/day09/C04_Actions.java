@@ -5,10 +5,8 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import tests.utilities.ReusableMethods;
-import tests.utilities.TestBase;
-
-import javax.swing.*;
+import utilities.ReusableMethods;
+import utilities.TestBase;
 
 public class C04_Actions extends TestBase {
     @Test

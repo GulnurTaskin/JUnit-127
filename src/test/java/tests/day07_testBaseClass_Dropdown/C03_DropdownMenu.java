@@ -5,8 +5,8 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
-import tests.utilities.ReusableMethods;
-import tests.utilities.TestBase;
+import utilities.ReusableMethods;
+import utilities.TestBase;
 
 import java.util.List;
 

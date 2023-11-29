@@ -28,6 +28,7 @@ public class C04_DosyaYolunuDinamikYapma {
         // C:\Users\taski\com.team127_JUnit
 
         /*
+
          C:\Users\taski\com.team127_JUnit ==> bu kisim herkesin kendi bilgisayarina ozeldir
 
          C:\Users\taski\com.team127_JUnit\src\test\java\tests\\utilities\TestBase.java

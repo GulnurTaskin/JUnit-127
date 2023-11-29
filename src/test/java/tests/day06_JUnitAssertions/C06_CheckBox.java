@@ -7,7 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-import tests.utilities.ReusableMethods;
+import utilities.ReusableMethods;
 
 import java.time.Duration;
 

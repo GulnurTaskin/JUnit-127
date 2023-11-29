@@ -3,8 +3,8 @@ package tests.day08_iFrame_cokluWindows;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import tests.utilities.ReusableMethods;
-import tests.utilities.TestBase;
+import utilities.ReusableMethods;
+import utilities.TestBase;
 
 import java.util.List;
 

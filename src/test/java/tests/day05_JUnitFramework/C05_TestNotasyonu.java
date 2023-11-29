@@ -4,7 +4,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import tests.utilities.ReusableMethods;
+import utilities.ReusableMethods;
 
 import java.time.Duration;
 

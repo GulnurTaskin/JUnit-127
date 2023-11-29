@@ -1,6 +1,10 @@
 package tests.day10_actions_faker_fileTestleri;
 
+import org.junit.Assert;
 import org.junit.Test;
+
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class C06_BilgisayardakiDosyayiTestEtme {
     @Test
@@ -8,8 +12,19 @@ public class C06_BilgisayardakiDosyayiTestEtme {
 
         // Downloads'da logo.png oldugunu test edin
 
+        String dosyaYolu = "C:\\Users\\taski\\Downloads\\logo.png";
+
+        Assert.assertTrue(Files.exists(Paths.get(dosyaYolu)));
 
 
+        // herkeste farkli olan kisim ==> user.home
+        //        C:\Users\taski
+        // herkeste ayni olan kisim ==>
+        //        \Downloads\logo.png
+
+        String dinamikDosyaYolu = System.getProperty("user.home");
+
+        Assert.assertTrue(Files.exists(Paths.get(dinamikDosyaYolu)));
 
     }
 }

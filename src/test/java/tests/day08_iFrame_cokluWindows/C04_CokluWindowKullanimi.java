@@ -2,8 +2,8 @@ package tests.day08_iFrame_cokluWindows;
 
 import org.junit.Test;
 import org.openqa.selenium.By;
-import tests.utilities.ReusableMethods;
-import tests.utilities.TestBase;
+import utilities.ReusableMethods;
+import utilities.TestBase;
 
 public class C04_CokluWindowKullanimi extends TestBase {
 

@@ -1,7 +1,7 @@
 package tests.day11_waits_cookies;
 
 import org.junit.Test;
-import tests.utilities.TestBase;
+import utilities.TestBase;
 
 public class C03_Cookies extends TestBase {
     @Test
