@@ -18,7 +18,7 @@
     projemize dahil olan tum kutuphaneleri
     buradan yonetebilirz (yukleyebilir, degistirebilir veya update edebiliriz)
 
-    mvn.repository
+    mvn.repositor
     -->
 
 <dependencies>

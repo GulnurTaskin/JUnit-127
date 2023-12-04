@@ -1,8 +1,15 @@
 package utilities;
 
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.io.File;
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -82,5 +89,74 @@ public class ReusableMethods {
                          // bu return'u eklemeyince intellij uyari veriyor
                          // o yuzden..
                          // javanin gonlu olsun diye bu return'u ekliyoruz ;)
+    }
+
+
+    public static void tumSayfaTakeScreenshot(WebDriver driver) {
+
+        // tum sayfanin fotografini cekip kaydedin, bunu 4 adimda yapiyoruz..
+
+        // 1.adim tss objesi olustur
+
+        TakesScreenshot tss = (TakesScreenshot) driver; // driver'a fotografci sapkasi takiyoruz :)
+
+        // 2.adim fotografi kaydedecegimiz dosya yolu ile bir File olusturalim
+
+        File tumSayfaScreenshot = new File("target/screenshots/tumSayfaScreenshot.jpg"); // fotonun adini koyuyoruz
+
+        // 3.adim tss objesini kullanarak fotografi cekip, gecici bir dosyaya kaydedelim
+
+        File geciciDosya = tss.getScreenshotAs(OutputType.FILE); // fotoyu cektik, kameranin dosyasinda su an, oyle dusunelim
+
+        // 4.adim : gecici dosyayi, asil dosyaya kopyalayalim
+
+        try {
+            FileUtils.copyFile(geciciDosya,tumSayfaScreenshot); // simdi basta olusturdugumuz dosya yoluna ,
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        // yani asil kayit etmek istedigimiz yere fotyu kaydediyoruz..
+
+        ReusableMethods.bekle(5);
+    }
+
+    public static void tumSayfaTakeScreenshot(String testAdi,WebDriver driver){
+
+        // tum sayfanin fotografini cekip kaydedin
+
+        // 1.adim tss objesi olustur
+
+        TakesScreenshot tss = (TakesScreenshot) driver; // driver'i fotografci yapiyoruz
+
+        // 2.adim fotografi kaydedecegimiz dosya yolu ile bir File olusturalim
+          // her yeni kaydedilen resmin oncekinin ustune kaydedilmemesi icin
+          // kaydedilecek dosya yolunu dinamik yapabiliriz
+          // dinamik yapmak icin dosya yoluna tarih etiketi ekleyelim
+
+        LocalDateTime localDateTime = LocalDateTime.now(); // lokal saat objesi olusturuyoruz
+        DateTimeFormatter istenenFormat = DateTimeFormatter.ofPattern("yyMMddHHmmss"); // saat'e format veriyoruz
+
+          // ss'leri ayri ayri kaydedecegimiz dinamik dosya yolunu su sekilde olusturuyoruz
+        String dinamikDosyaYolu = "target/screenshots/"+ // ilk kisim standart
+                testAdi // method'dan geliyor
+                +
+                localDateTime.format(istenenFormat)+ // tarih
+                ".jpg"; // fotograf icin uygun gordugumuz foto uzantisi
+
+        File tumSayfaScreenshot = new File(dinamikDosyaYolu);
+
+        // 3.adim tss objesini kullanarak fotografi cekip, gecici bir dosyaya kaydedelim
+
+        File geciciDosya = tss.getScreenshotAs(OutputType.FILE);
+
+        // 4.adim : gecici dosyayi, asil dosyaya kopyalayalim
+
+        try {
+            FileUtils.copyFile(geciciDosya,tumSayfaScreenshot);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        ReusableMethods.bekle(5);
     }
 }
