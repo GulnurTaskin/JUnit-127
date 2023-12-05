@@ -40,12 +40,18 @@ public class C07_ScrollIntoView extends TestBase {
         WebElement bestSportShoesElementi = driver.findElement(By.xpath("(//p[@class='blog-heading'])[2]"));
 
         JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
+        // direk driver'a atamadi,JavascriptExecutor'a casting yapti
+
         javascriptExecutor.executeScript("arguments[0].scrollIntoView();", bestSportShoesElementi);
+        // executescript varargs iceriyor, ikinci kisim varargs
+        // bu sekilde bestSportShoesElementi'ne kadar scroll yap diyoruz
+        // parantez icindeki yesil kisim javascript kodu
+        // yesil javascript kodunu calistir, nereye kadar? bestSportShoesElementi'ne kadar
+
         // linki tiklayin
+        ReusableMethods.bekle(2); // bulmak icin acele etmeyelim, bekleme ekliyoruz
 
-        ReusableMethods.bekle(2);
-
-        bestSportShoesElementi.click();
+        bestSportShoesElementi.click(); // sonra click yapiyoruz
 
         //javascriptExecutor.executeScript("arguments[0].click();",bestSportShoesElementi);
 
